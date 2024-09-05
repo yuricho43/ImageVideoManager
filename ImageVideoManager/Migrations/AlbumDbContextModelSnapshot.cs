@@ -120,8 +120,9 @@ namespace ImageVideoManager.Migrations
                     b.Property<string>("Reserved2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MediaID");
 

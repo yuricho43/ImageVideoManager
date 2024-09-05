@@ -26,7 +26,7 @@ namespace ImageVideoManager.Data
         public int MediaID { get; set; }
 
         public int AlbumID {get; set; }
-        public int UserID { get; set; } 
+        public string UserID { get; set; } 
 
         public string MediaType { get;set; }
         public string FilePath { get; set; }
@@ -60,7 +60,6 @@ namespace ImageVideoManager.Data
         public string? Reserved1 { get; set; }
     }
 
-
     public class AlbumTagDto
     {
         [Required]
@@ -87,14 +86,14 @@ namespace ImageVideoManager.Data
     public class MediaDto
     {
         public string AlbumName { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
         public string MediaType { get; set; }
         public string FilePath { get; set; }
         public string FileName { get; set; }
         public int FileSize { get; set; }
 
-        public string? PictureDate { get; set; }
+        public DateTime? PictureDate { get; set; }
         public string? Place { get; set; }
         public string? PeopleRelation { get; set; }
 

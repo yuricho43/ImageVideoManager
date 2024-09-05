@@ -110,7 +110,21 @@
                                 </FormValidation>
 
                                 <FormItems>
-                                    <FormItem Field="@nameof(MediaDto.AlbumName)" LabelText="Album Name(*)"></FormItem>
+                                    <FormItem Field="@nameof(MediaDto.AlbumName)" LabelText="Album Name(*)">
+                                        <Template>
+                                            <label for="album" class="k-label k-form-label">Album Name</label>
+                                            <div class="k-form-field-wrap">
+                                                <TelerikDropDownList @bind-Value="@gSelectedAlbum"
+                                                                     DefaultText="Select Album"
+                                                                     Data="@gDropDownAlbum"
+                                                                     Id="album">
+                                                    <DropDownListSettings>
+                                                        <DropDownListPopupSettings Height="auto" />
+                                                    </DropDownListSettings>
+                                                </TelerikDropDownList>
+                                            </div>
+                                        </Template>
+                                    </FormItem>
                                     <FormItem Field="@nameof(MediaDto.PictureDate)" LabelText="Picture Date(*)"></FormItem>
                                     <FormItem Field="@nameof(MediaDto.Place)" LabelText="Place(*)"></FormItem>
                                     <FormItem Field="@nameof(MediaDto.PeopleRelation)" LabelText="PeopleRelation(*)"></FormItem>
@@ -129,14 +143,27 @@
                         *@
                         <div class="form-section2">
                             <div class="k-form-field-wrap">
-                                <TelerikFileSelect class="k-upload" AllowedExtensions="@AllowedExtensions"
+                                <TelerikFileSelect class="k-upload"
+                                                   @ref="@FileSelectRef" 
+                                                   AllowedExtensions="@AllowedExtensions"
                                                    MaxFileSize="@MaxFileSize"
-                                                   OnSelect="@OnSelectHandler">
+                                                   OnSelect="@OnSelectHandler"
+                                                   OnRemove="@HandleRemoveFiles">
                                     <SelectFilesButtonTemplate>
                                         <TelerikSvgIcon Icon="@SvgIcon.Upload" />
                                         Click to Select Files
                                     </SelectFilesButtonTemplate>
                                 </TelerikFileSelect>
+                            </div>
+                        </div>
+
+                        <div class="form-section2">
+                            <div class="k-form-field-wrap">
+                            <TelerikMultiSelect Data="@gListTags"
+                                            @bind-Value="@gSeletedTags"
+                                            Placeholder="Select Tags"
+                                            Width="350px" ClearButton="true" AutoClose="false">
+                            </TelerikMultiSelect>
                             </div>
                         </div>
                     }
@@ -168,6 +195,11 @@
     public bool ValidMediaSubmit { get; set; } = false;
     private TelerikForm FormMediaRef { get; set; }
     private string gErrorMessage = "";
+    private string gSelectedAlbum {get;set;} = "";
+    private List<string> gDropDownAlbum = new List<string>();
+    private List<string> gListTags = new List<string>();
+    private List<string> gSeletedTags = new List<string>();
+    private List<FileSelectFileInfo> gListFiles = new List<FileSelectFileInfo>();
 
     //========================================================================
     //--- File Upload
@@ -176,7 +208,7 @@
     List<string> AllowedExtensions { get; set; } = new List<string>() { ".docx", ".pdf", ".xlsx", ".txt" };
     int MaxFileSize { get; set; } = 1024 * 1024; // 1 MB
     public Dictionary<string, CancellationTokenSource> Tokens { get; set; } = new Dictionary<string, CancellationTokenSource>();
-
+    private TelerikFileSelect FileSelectRef { get; set; }
 
     public string ToAbsoluteUrl(string url)
     {
@@ -188,20 +220,23 @@
         foreach (var file in args.Files)
         {
             long lSize = file.Stream.Length;
-            UploadFile(file);
+            gListFiles.Add(file);
         }
+
     }
 
+    //--------------------------------------------------------------------------
     private async Task UploadFile(FileSelectFileInfo file)
     {
         // This code will work in Blazor Server apps.
         // Saving files on the user device is not allowed in WebAssembly apps.
         Tokens.Add(file.Id, new CancellationTokenSource());
-        var path = Path.Combine("c:\\Temp\\", file.Name);
+        var path = Path.Combine("c:/Temp/", file.Name);
         await using FileStream fs = new FileStream(path, FileMode.Create);
         await file.Stream.CopyToAsync(fs, Tokens[file.Id].Token);
     }
 
+    //--------------------------------------------------------------------------
     private async Task ReadFile(FileSelectFileInfo file)
     {
         Tokens.Add(file.Id, new CancellationTokenSource());
@@ -210,10 +245,16 @@
         await file.Stream.CopyToAsync(ms, Tokens[file.Id].Token);
     }
 
+    //--------------------------------------------------------------------------
     private async Task HandleRemoveFiles(FileSelectEventArgs args)
     {
         foreach (var file in args.Files)
         {
+
+            var itemToRemove = gListFiles.SingleOrDefault(r => r.Id == file.Id);
+            if (itemToRemove != null)
+                gListFiles.Remove(itemToRemove);
+
             // If you're still uploading the file, cancel the process first.
             Tokens[file.Id].Cancel();
             Tokens.Remove(file.Id);
@@ -227,12 +268,40 @@
         }
 
     }
+
+    //--------------------------------------------------------------------------
+    protected async void HandleValidMediaSubmit()
+    {
+        gErrorMessage = "OK";
+
+        gMediaEntry.AlbumName = gSelectedAlbum;
+        //--- Check if Media is Exist (Filename)
+        //--- Check if Description is Same
+        foreach (var file in gListFiles)
+        {
+            gErrorMessage = alService.AddOrUpdateMedia(gMediaEntry, file, gLogginId, gSeletedTags);
+        }
+        
+
+    }
+
+    //--------------------------------------------------------------------------
+    void HandleInvalidMediaSubmit()
+    {
+        ValidMediaSubmit = false;
+        gErrorMessage = "입력하지 않은 Media 항목이 있습니다";
+    }
+
+
     //========================================================================
     protected override async Task OnInitializedAsync()
     {
         gLogginUser = UserManager.GetUserName(HttpContextAccessor.HttpContext.User);
         gLogginId = UserManager.GetUserId(HttpContextAccessor.HttpContext.User);
         GetMediaData();
+
+        gDropDownAlbum = alService.GetAlbumNames();
+        gListTags = alService.GetTagNames();
     }
 
 
@@ -261,31 +330,10 @@
         if (currVisible == false)
         {
             NavManager.NavigateTo("/input", true); // 다시 listup
+        } else
+        {
+            gListFiles.Clear();
         }
-    }
-
-    //========================================================================
-    protected async void HandleValidMediaSubmit()
-    {
-        gErrorMessage = "OK";
-
-        //--- Check if AlbumName is Exist
-        //    (Exist)
-        //      * Description Same ==> 이미 존재. RETURN
-        //      *             Diff ==> Update 물어보고 처리
-        //    (NotExist)
-        //      * Add
-        //--- Check if Description is Same
-
-        //gErrorMessage = alService.AddOrUpdateAlbum(gMediaEntry, gLogginId);
-
-    }
-
-    //========================================================================
-    void HandleInvalidMediaSubmit()
-    {
-        ValidMediaSubmit = false;
-        gErrorMessage = "입력하지 않은 Album 항목이 있습니다";
     }
 
 }

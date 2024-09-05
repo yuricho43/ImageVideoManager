@@ -1,5 +1,7 @@
 ﻿using ImageVideoManager.Data;
 using Microsoft.EntityFrameworkCore;
+using Telerik.Blazor.Components;
+using static Azure.Core.HttpHeader;
 
 namespace ImageVideoManager.Services
 {
@@ -23,6 +25,7 @@ namespace ImageVideoManager.Services
          * Functions for Album
          *      GetAlbumData()
          *      AddOrUpdateAlbum()
+         *      GetAlbumNames()
          ************************************************************************/
 
         //------------------------------------------------------------
@@ -51,13 +54,22 @@ namespace ImageVideoManager.Services
             return no.ToString() + " Added";
         }
 
+        //------------------------------------------------------------
+        //--- Get Album Names
+        public List<string> GetAlbumNames()
+        {
+            List<string> alnames = _dbx.Albums.Select(x => x.AlbumName).ToList();
+            return alnames;
+        }
+
         /************************************************************************
-         * Functions for Album
-         *      GetAlbumData()
-         *      AddOrUpdateAlbum()
+         * Functions for Tag
+         *      GetTagData()
+         *      AddOrUpdateTag()
+         *      GetTagNames()
         ************************************************************************/
         //------------------------------------------------------------
-        //--- Retrieve Album
+        //--- Retrieve Tag
         public List<BaseTag> GetTagData()
         {
             List<BaseTag> tags = _dbx.Tags.ToList();
@@ -65,7 +77,7 @@ namespace ImageVideoManager.Services
         }
 
         //------------------------------------------------------------
-        //--- Add or Update Album
+        //--- Add or Update Tag
         public string AddOrUpdateTag(string strTag)
         {
             if (strTag.Length < 1)
@@ -82,7 +94,59 @@ namespace ImageVideoManager.Services
             return no.ToString() + " Added";
         }
 
+        //------------------------------------------------------------
+        //--- Get Tag Lists
+        public List<string> GetTagNames()
+        {
+            List<string> tgnames = _dbx.Tags.Select(x => x.TagName).ToList();
+            return tgnames;
+        }
 
+        /************************************************************************
+         * Functions for Media
+         *      GetTagData()
+         *      AddOrUpdateTag()
+         *      GetTagNames()
+        ************************************************************************/
+
+        //------------------------------------------------------------
+        //--- Add Media To DB : 중복 체크 ==> AlbumName & MediaFileName
+        //    1) MediaTable
+        //    2) MediaTagTable
+        public string AddOrUpdateMedia(MediaDto mdDto, FileSelectFileInfo fi, string strId, List<string> listTags)
+        {
+            //--- Check if file exist
+            var oldmd = _dbx.Medias.Where(x => x.FileName == fi.Name).ToList();
+
+            //--- Update
+            if (oldmd != null && oldmd.Count > 0)
+            {
+
+            }
+            //--- Add
+            else
+            {
+                Media media = new Media();
+
+                media.FileName = fi.Name;
+                media.FilePath = mdDto.AlbumName;        // root/album명
+                media.FileSize = (int) fi.Size;
+
+                media.AlbumID = _dbx.Albums.Where(x => x.AlbumName == mdDto.AlbumName).Select(n => n.AlbumID).FirstOrDefault();
+                media.PictureDate = mdDto.PictureDate.ToString();
+                media.Place = mdDto.Place;
+                media.PeopleRelation = mdDto.PeopleRelation;
+                media.DateUploaded = DateTime.Now;
+                media.UserID = strId;
+                media.MediaType = "image";
+                media.Reserved1 = String.Join(", ", listTags.ToArray());
+
+                _dbx.Medias.Add(media);
+            }
+            int no = _dbx.SaveChanges();
+
+            return no.ToString() + " Added";
+        }
     }
 
 }
