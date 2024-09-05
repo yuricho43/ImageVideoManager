@@ -197,3 +197,18 @@
 2024-09-05 15:40:29.012 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
 2024-09-05 15:40:29.013 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
 2024-09-05 15:40:29.014 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-05 16:17:25.308 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-05 16:17:25.332 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-05 16:17:25.361 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-05 16:17:25.362 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-05 16:17:25.363 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-05 16:23:55.783 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-05 16:23:55.804 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-05 16:23:55.832 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-05 16:23:55.833 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-05 16:23:55.834 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-05 16:25:38.741 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-05 16:25:38.764 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-05 16:25:38.794 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-05 16:25:38.799 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-05 16:25:38.800 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"

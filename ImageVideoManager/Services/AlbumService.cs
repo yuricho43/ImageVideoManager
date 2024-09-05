@@ -113,7 +113,7 @@ namespace ImageVideoManager.Services
         //--- Add Media To DB : 중복 체크 ==> AlbumName & MediaFileName
         //    1) MediaTable
         //    2) MediaTagTable
-        public string AddOrUpdateMedia(MediaDto mdDto, FileSelectFileInfo fi, string strId, List<string> listTags)
+        public string AddOrUpdateMedia(MediaDto mdDto, FileSelectFileInfo fi, string strId, List<string> listTags, string targetDir)
         {
             //--- Check if file exist
             var oldmd = _dbx.Medias.Where(x => x.FileName == fi.Name).ToList();
@@ -129,7 +129,7 @@ namespace ImageVideoManager.Services
                 Media media = new Media();
 
                 media.FileName = fi.Name;
-                media.FilePath = mdDto.AlbumName;        // root/album명
+                media.FilePath = targetDir;        // root/album명
                 media.FileSize = (int) fi.Size;
 
                 media.AlbumID = _dbx.Albums.Where(x => x.AlbumName == mdDto.AlbumName).Select(n => n.AlbumID).FirstOrDefault();

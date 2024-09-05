@@ -226,12 +226,15 @@
     }
 
     //--------------------------------------------------------------------------
-    private async Task UploadFile(FileSelectFileInfo file)
+    private async Task UploadFile(FileSelectFileInfo file, string targetDir)
     {
         // This code will work in Blazor Server apps.
         // Saving files on the user device is not allowed in WebAssembly apps.
         Tokens.Add(file.Id, new CancellationTokenSource());
-        var path = Path.Combine("c:/Temp/", file.Name);
+        if (!Directory.Exists(targetDir))
+            Directory.CreateDirectory(targetDir);
+
+        var path = Path.Combine(targetDir, file.Name);
         await using FileStream fs = new FileStream(path, FileMode.Create);
         await file.Stream.CopyToAsync(fs, Tokens[file.Id].Token);
     }
@@ -261,7 +264,7 @@
 
             await Task.Delay(1);
 
-            var path = Path.Combine("c:\\Temp\\", file.Name);
+            var path = Path.Combine("c:/Temp/", file.Name);
 
             // Remove the file from the file system
             //File.Delete(path);
@@ -279,7 +282,9 @@
         //--- Check if Description is Same
         foreach (var file in gListFiles)
         {
-            gErrorMessage = alService.AddOrUpdateMedia(gMediaEntry, file, gLogginId, gSeletedTags);
+            string targetDir = Path.Combine(Constants.RootPath, gSelectedAlbum);
+            gErrorMessage = alService.AddOrUpdateMedia(gMediaEntry, file, gLogginId, gSeletedTags, targetDir);
+            UploadFile(file, targetDir);
         }
         
 
