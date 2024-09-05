@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -67,6 +68,7 @@ builder.Services.Configure<HubOptions>(options =>
     options.MaximumReceiveMessageSize = 1024 * 1024; // 1MB or use null
 });
 
+builder.Services.Configure<RazorPagesOptions>(options => options.RootDirectory = "/Pages");
 //========================================================================
 var app = builder.Build();
 
