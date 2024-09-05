@@ -1,0 +1,318 @@
+2024-09-04 13:21:46.435 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 13:21:46.457 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 13:21:46.485 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 13:21:46.486 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 13:21:46.487 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 13:21:54.186 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 13:21:54.728 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 13:24:45.099 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 13:24:45.119 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 13:24:45.170 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 13:24:45.213 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 13:24:45.251 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 13:24:48.976 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 13:24:49.177 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 13:25:16.405 +09:00 [Warning] [Microsoft.AspNetCore.Components.Server.Circuits.RemoteRenderer] [{ Id: 100, Name: "ExceptionRenderingComponent" }] Unhandled exception rendering component: "Object of type 'Telerik.Blazor.Components.TelerikButton' does not have a property matching the name '.TableRowInsertBelow'."
+System.InvalidOperationException: Object of type 'Telerik.Blazor.Components.TelerikButton' does not have a property matching the name '.TableRowInsertBelow'.
+   at Microsoft.AspNetCore.Components.Reflection.ComponentProperties.ThrowForUnknownIncomingParameterName(Type targetType, String parameterName)
+   at Microsoft.AspNetCore.Components.Reflection.ComponentProperties.SetProperties(ParameterView& parameters, Object target)
+   at Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(ParameterView parameters)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.SupplyCombinedParameters(ParameterView directAndCascadingParameters)
+2024-09-04 13:25:16.416 +09:00 [Error] [Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost] [{ Id: 111, Name: "CircuitUnhandledException" }] Unhandled exception in circuit '"4NtMDRa7miIo_y9HxofX1mX8t5LZ0AFDdHEvGt1Zoy0"'.
+System.InvalidOperationException: Object of type 'Telerik.Blazor.Components.TelerikButton' does not have a property matching the name '.TableRowInsertBelow'.
+   at Microsoft.AspNetCore.Components.Reflection.ComponentProperties.ThrowForUnknownIncomingParameterName(Type targetType, String parameterName)
+   at Microsoft.AspNetCore.Components.Reflection.ComponentProperties.SetProperties(ParameterView& parameters, Object target)
+   at Microsoft.AspNetCore.Components.ComponentBase.SetParametersAsync(ParameterView parameters)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.SupplyCombinedParameters(ParameterView directAndCascadingParameters)
+2024-09-04 13:25:17.391 +09:00 [Warning] [Microsoft.AspNetCore.Components.Server.Circuits.RemoteRenderer] [{ Id: 100, Name: "ExceptionRenderingComponent" }] Unhandled exception rendering component: "Cannot access a disposed object."
+System.ObjectDisposedException: Cannot access a disposed object.
+   at Microsoft.AspNetCore.Components.RenderTree.ArrayBuilder`1.GrowBuffer(Int32 desiredCapacity)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.RemoveOldFrame(DiffContext& diffContext, Int32 oldFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.ComputeDiff(Renderer renderer, RenderBatchBuilder batchBuilder, Int32 componentId, ArrayRange`1 oldTree, ArrayRange`1 newTree)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(RenderBatchBuilder batchBuilder, RenderFragment renderFragment, Exception& renderFragmentException)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessRenderQueue()
+2024-09-04 13:25:17.400 +09:00 [Error] [Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost] [{ Id: 111, Name: "CircuitUnhandledException" }] Unhandled exception in circuit '"4NtMDRa7miIo_y9HxofX1mX8t5LZ0AFDdHEvGt1Zoy0"'.
+System.ObjectDisposedException: Cannot access a disposed object.
+   at Microsoft.AspNetCore.Components.RenderTree.ArrayBuilder`1.GrowBuffer(Int32 desiredCapacity)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.RemoveOldFrame(DiffContext& diffContext, Int32 oldFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.ComputeDiff(Renderer renderer, RenderBatchBuilder batchBuilder, Int32 componentId, ArrayRange`1 oldTree, ArrayRange`1 newTree)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(RenderBatchBuilder batchBuilder, RenderFragment renderFragment, Exception& renderFragmentException)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessRenderQueue()
+2024-09-04 13:25:35.890 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 13:25:35.910 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 13:25:35.942 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 13:25:35.944 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 13:25:35.945 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 13:25:39.762 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 13:25:40.127 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 14:01:12.889 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 14:01:12.916 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 14:01:12.951 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 14:01:12.952 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 14:01:12.953 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 14:01:20.177 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 14:01:20.572 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 14:17:48.578 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 14:17:48.601 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 14:17:48.630 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 14:17:48.631 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 14:17:48.631 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 14:17:53.774 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 14:17:53.966 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 14:31:16.218 +09:00 [Warning] [Microsoft.AspNetCore.Components.Server.Circuits.RemoteRenderer] [{ Id: 100, Name: "ExceptionRenderingComponent" }] Unhandled exception rendering component: "Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running."
+System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at ImageVideoManager.Pages.AlbumPage.get_gListAlbumData()
+   at ImageVideoManager.Pages.AlbumPage.<BuildRenderTree>b__0_4(RenderTreeBuilder __builder3)
+   at Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.AddContent(Int32 sequence, RenderFragment fragment)
+   at Telerik.Blazor.Components.CardBody.BuildRenderTree(RenderTreeBuilder __builder)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(RenderBatchBuilder batchBuilder, RenderFragment renderFragment, Exception& renderFragmentException)
+2024-09-04 14:31:16.228 +09:00 [Error] [Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost] [{ Id: 111, Name: "CircuitUnhandledException" }] Unhandled exception in circuit '"Bd_wW5gDnNwLIDPBfCcOZPpyZFyAmWGiCGEb1IFoSA8"'.
+System.MissingMethodException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at ImageVideoManager.Pages.AlbumPage.get_gListAlbumData()
+   at ImageVideoManager.Pages.AlbumPage.<BuildRenderTree>b__0_4(RenderTreeBuilder __builder3)
+   at Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder.AddContent(Int32 sequence, RenderFragment fragment)
+   at Telerik.Blazor.Components.CardBody.BuildRenderTree(RenderTreeBuilder __builder)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(RenderBatchBuilder batchBuilder, RenderFragment renderFragment, Exception& renderFragmentException)
+2024-09-04 14:31:17.160 +09:00 [Warning] [Microsoft.AspNetCore.Components.Server.Circuits.RemoteRenderer] [{ Id: 100, Name: "ExceptionRenderingComponent" }] Unhandled exception rendering component: "Cannot access a disposed object."
+System.ObjectDisposedException: Cannot access a disposed object.
+   at Microsoft.AspNetCore.Components.RenderTree.ArrayBuilder`1.GrowBuffer(Int32 desiredCapacity)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.ComputeDiff(Renderer renderer, RenderBatchBuilder batchBuilder, Int32 componentId, ArrayRange`1 oldTree, ArrayRange`1 newTree)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(RenderBatchBuilder batchBuilder, RenderFragment renderFragment, Exception& renderFragmentException)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessRenderQueue()
+2024-09-04 14:31:17.166 +09:00 [Error] [Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost] [{ Id: 111, Name: "CircuitUnhandledException" }] Unhandled exception in circuit '"Bd_wW5gDnNwLIDPBfCcOZPpyZFyAmWGiCGEb1IFoSA8"'.
+System.ObjectDisposedException: Cannot access a disposed object.
+   at Microsoft.AspNetCore.Components.RenderTree.ArrayBuilder`1.GrowBuffer(Int32 desiredCapacity)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForFramesWithSameSequence(DiffContext& diffContext, Int32 oldFrameIndex, Int32 newFrameIndex)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.AppendDiffEntriesForRange(DiffContext& diffContext, Int32 oldStartIndex, Int32 oldEndIndexExcl, Int32 newStartIndex, Int32 newEndIndexExcl)
+   at Microsoft.AspNetCore.Components.RenderTree.RenderTreeDiffBuilder.ComputeDiff(Renderer renderer, RenderBatchBuilder batchBuilder, Int32 componentId, ArrayRange`1 oldTree, ArrayRange`1 newTree)
+   at Microsoft.AspNetCore.Components.Rendering.ComponentState.RenderIntoBatch(RenderBatchBuilder batchBuilder, RenderFragment renderFragment, Exception& renderFragmentException)
+   at Microsoft.AspNetCore.Components.RenderTree.Renderer.ProcessRenderQueue()
+2024-09-04 14:33:16.263 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 14:33:16.291 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 14:33:16.423 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 14:33:16.424 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 14:33:16.426 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 14:33:20.067 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 14:33:20.248 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:17:46.716 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 15:17:46.739 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 15:17:46.768 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 15:17:46.769 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 15:17:46.770 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 15:17:53.485 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:17:53.857 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:25:08.552 +09:00 [Error] [Microsoft.EntityFrameworkCore.Database.Command] [{ Id: 20102, Name: "Microsoft.EntityFrameworkCore.Database.Command.CommandError" }] Failed executing DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);"
+2024-09-04 15:27:08.701 +09:00 [Error] [Microsoft.EntityFrameworkCore.Database.Command] [{ Id: 20102, Name: "Microsoft.EntityFrameworkCore.Database.Command.CommandError" }] Failed executing DbCommand ("0"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""CREATE TABLE [AspNetRoles] (
+    [Id] nvarchar(450) NOT NULL,
+    [Name] nvarchar(256) NULL,
+    [NormalizedName] nvarchar(256) NULL,
+    [ConcurrencyStamp] nvarchar(max) NULL,
+    CONSTRAINT [PK_AspNetRoles] PRIMARY KEY ([Id])
+);"
+2024-09-04 15:29:45.886 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 15:29:45.910 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 15:29:45.941 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 15:29:45.942 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 15:29:45.944 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 15:30:04.047 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:30:04.437 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:33:07.880 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 15:33:07.911 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 15:33:08.038 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 15:33:08.039 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 15:33:08.040 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 15:33:13.464 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:33:13.674 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:35:50.888 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 15:35:50.910 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 15:35:50.938 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 15:35:50.939 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 15:35:50.940 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 15:35:55.096 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:35:55.281 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 15:37:12.799 +09:00 [Error] [Microsoft.EntityFrameworkCore.Update] [{ Id: 10000, Name: "Microsoft.EntityFrameworkCore.Update.SaveChangesFailed" }] An exception occurred in the database while saving changes for context type '"ImageVideoManager.Data.AlbumDbContext"'."
+""Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): nvarchar 값 '5bceb45c-60de-4dba-be08-dea51b2ab94a'을(를) 데이터 형식 int(으)로 변환하지 못했습니다.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.Read()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDataReader.Read()
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSet(Int32 startCommandIndex, RelationalDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(RelationalDataReader reader)
+ClientConnectionId:2603ea18-7a09-4587-af09-8ed97cbae5b9
+Error Number:245,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(RelationalDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__107_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)"
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): nvarchar 값 '5bceb45c-60de-4dba-be08-dea51b2ab94a'을(를) 데이터 형식 int(으)로 변환하지 못했습니다.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.Read()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDataReader.Read()
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSet(Int32 startCommandIndex, RelationalDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(RelationalDataReader reader)
+ClientConnectionId:2603ea18-7a09-4587-af09-8ed97cbae5b9
+Error Number:245,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(RelationalDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__107_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+2024-09-04 15:37:16.973 +09:00 [Error] [Microsoft.AspNetCore.Components.Server.Circuits.CircuitHost] [{ Id: 111, Name: "CircuitUnhandledException" }] Unhandled exception in circuit '"nVvhcc9W7dQFWLhUY21xPhgEqL2Fahq4_h4bvYiuW1M"'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.SqlClient.SqlException (0x80131904): nvarchar 값 '5bceb45c-60de-4dba-be08-dea51b2ab94a'을(를) 데이터 형식 int(으)로 변환하지 못했습니다.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at Microsoft.Data.SqlClient.SqlDataReader.Read()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDataReader.Read()
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSet(Int32 startCommandIndex, RelationalDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(RelationalDataReader reader)
+ClientConnectionId:2603ea18-7a09-4587-af09-8ed97cbae5b9
+Error Number:245,State:1,Class:16
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.Consume(RelationalDataReader reader)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.Execute(IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.Execute(IEnumerable`1 commandBatches, IRelationalConnection connection)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChanges(IList`1 entries)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(IList`1 entriesToSave)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(StateManager stateManager, Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.<>c.<SaveChanges>b__107_0(DbContext _, ValueTuple`2 t)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges(Boolean acceptAllChangesOnSuccess)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChanges()
+   at ImageVideoManager.Services.AlbumService.AddOrUpdateAlbum(AlbumTagDto atDto, String strId) in C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager\Services\AlbumService.cs:line 28
+   at ImageVideoManager.Pages.AlbumPage.HandleValidSubmit() in C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager\Pages\AlbumPage.razor:line 179
+   at System.Threading.Tasks.Task.<>c.<ThrowAsync>b__128_0(Object state)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.ExecuteSynchronously(TaskCompletionSource completion, SendOrPostCallback d, Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at Microsoft.AspNetCore.Components.Rendering.RendererSynchronizationContext.ExecuteBackground(WorkItem item)
+2024-09-04 16:14:05.668 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 16:14:05.690 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 16:14:05.718 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 16:14:05.719 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 16:14:05.720 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 16:14:10.181 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:14:10.575 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:15:51.548 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:19:05.328 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 16:19:05.350 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 16:19:05.377 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 16:19:05.378 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 16:19:05.379 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 16:19:10.281 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:19:10.667 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:52:42.762 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 16:52:42.783 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 16:52:42.811 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 16:52:42.812 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 16:52:42.813 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 16:52:47.219 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:52:47.503 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:53:39.851 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 16:53:39.872 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 16:53:39.899 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 16:53:39.900 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 16:53:39.901 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 16:53:43.891 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:53:44.256 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:55:08.912 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:56:11.288 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 16:56:11.311 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 16:56:11.449 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 16:56:11.450 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 16:56:11.451 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 16:56:15.491 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 16:56:15.685 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:14:44.295 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 17:14:44.320 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 17:14:44.349 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 17:14:44.351 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 17:14:44.352 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 17:14:48.669 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:14:49.036 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:19:27.216 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 17:19:27.238 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 17:19:27.265 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 17:19:27.267 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 17:19:27.267 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 17:19:31.556 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:19:31.926 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:38:29.863 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 17:38:29.883 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 17:38:29.910 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 17:38:29.912 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 17:38:29.912 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 17:38:35.792 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:38:35.994 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:41:47.401 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "https://localhost:7095"
+2024-09-04 17:41:47.422 +09:00 [Information] [Microsoft.Hosting.Lifetime] [{ Id: 14, Name: "ListeningOnAddress" }] Now listening on: "http://localhost:5271"
+2024-09-04 17:41:47.449 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Application started. Press Ctrl+C to shut down.
+2024-09-04 17:41:47.449 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Hosting environment: "Development"
+2024-09-04 17:41:47.450 +09:00 [Information] [Microsoft.Hosting.Lifetime] [] Content root path: "C:\PROJ2024\Photo_Video_Management_System\ImageVideoManager\ImageVideoManager"
+2024-09-04 17:41:52.570 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521
+2024-09-04 17:41:52.771 +09:00 [Information] [ImageVideoManager.Pages.AuthTest] [] ImageVideoManager Initialized: user=2101521

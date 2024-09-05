@@ -1,0 +1,293 @@
+﻿@page "/input"
+@using ImageVideoManager.Data
+@using ImageVideoManager.Entities;
+@using ImageVideoManager.Services
+@using Telerik.DataSource
+@using Telerik.DataSource.Extensions
+@using Telerik.FontIcons;
+@using Telerik.SvgIcons
+@using Microsoft.AspNetCore.Identity
+
+@inject NavigationManager NavManager
+@inject UserManager<ApplicationUser> UserManager
+@inject ILogger<AuthTest> Logger
+@inject AlbumService alService
+@inject IHttpContextAccessor HttpContextAccessor
+
+<PageTitle>Media 검색/추가</PageTitle>
+<div class="card-header text-lg-center pt-2 pb-2 fw-bold px-9"> Media 입력/검색 </div>
+
+<AuthorizeView>
+    <Authorized>
+        <CardHeader>
+            <TelerikButton OnClick="@AddMedia" ThemeColor="success" Icon=SvgIcon.ImageAdd>Media추가</TelerikButton>&nbsp;&nbsp;&nbsp;&nbsp;
+        </CardHeader>
+
+        <CardBody class="form-section2">
+            <div class="horizontal-layout">
+            </div>
+
+            <TelerikGrid Class="sbms-grid"
+                         Data="@gListMediaData"
+                         Pageable=false
+                         Groupable=false
+                         Sortable=false
+                         Resizable=false
+                         Width="100%"
+                         Height="100%">
+                <GridToolBarTemplate>
+                    <TelerikButton OnClick="@AddMedia" ThemeColor="success" Icon=SvgIcon.ImageAdd> Media추가</TelerikButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                </GridToolBarTemplate>
+
+                <GridColumns>
+                    <GridColumn Field="@nameof(Media.MediaID)" Width="50px" Title="MediaID" />
+                    <GridColumn Field="@nameof(Media.AlbumID)" Width="50px" Title="AlbumID" />
+                    <GridColumn Field="@nameof(Media.UserID)" Width="50px" Title="UserID" />
+                    <GridColumn Field="@nameof(Media.MediaType)" Width="50px" Title="MediaType" />
+                    <GridColumn Field="@nameof(Media.FilePath)" Width="200px" Title="FilePath" />
+                    <GridColumn Field="@nameof(Media.FileName)" Width="100px" Title="FileName" />
+                    <GridColumn Field="@nameof(Media.PictureDate)" Width="100px" Title="PictureDate" />
+                    <GridColumn Field="@nameof(Media.Place)" Width="100px" Title="Place" />
+                    <GridColumn Field="@nameof(Media.PeopleRelation)" Width="100px" Title="PeopleRelation" />
+                    <GridColumn Field="@nameof(Media.Reserved1)" Width="100px" Title="Tags" />
+                    <GridColumn Field="@nameof(Media.DateUploaded)" Width="100px" Title="UploadDate" />
+                </GridColumns>
+            </TelerikGrid>
+        </CardBody>
+
+        @******************************************************************************@
+        @*  Media Input Window                                                        *@
+
+        <TelerikWindow Visible="@WindowMediaIsVisible"
+                       VisibleChanged="@VisibleMediaChangedHandler"
+                       Modal="true"
+                       MinHeight="200px"
+                       Height="600px"
+                       MaxHeight="800px"
+                       MinWidth="400px"
+                       Width="1000px"
+                       MaxWidth="1000px">
+
+            <WindowTitle>
+                Media 생성/편집
+            </WindowTitle>
+
+            <WindowActions>
+                <WindowAction Name="Close" />
+            </WindowActions>
+
+            <WindowContent>
+                <div class="form-section">
+                    @if (ValidMediaSubmit)
+                    {
+                        <div class="success-alert">
+                            데이터가 정상적으로 입력 되었습니다.
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <h2>@gErrorMessage</h2>
+                        </div>
+                        <div>
+                            <TelerikForm class="form-tel"
+                                         @ref="@FormMediaRef"
+                                         Model="@gMediaEntry"
+                                         Columns="@gNumColumns"
+                                         ColumnSpacing="10px"
+                                         Orientation=FormOrientation.Horizontal
+                                         ButtonsLayout="FormButtonsLayout.Start"
+                                         OnValidSubmit="@HandleValidMediaSubmit"
+                                         ValidationMessageType="@FormValidationMessageType.Tooltip"
+                                         OnInvalidSubmit="@HandleInvalidMediaSubmit">
+
+                                <FormButtons>
+                                    <TelerikButton ButtonType="@ButtonType.Submit" ThemeColor="primary">입력완료하기</TelerikButton>
+                                </FormButtons>
+
+                                <FormValidation>
+                                    <DataAnnotationsValidator />
+                                </FormValidation>
+
+                                <FormItems>
+                                    <FormItem Field="@nameof(MediaDto.AlbumName)" LabelText="Album Name(*)"></FormItem>
+                                    <FormItem Field="@nameof(MediaDto.PictureDate)" LabelText="Picture Date(*)"></FormItem>
+                                    <FormItem Field="@nameof(MediaDto.Place)" LabelText="Place(*)"></FormItem>
+                                    <FormItem Field="@nameof(MediaDto.PeopleRelation)" LabelText="PeopleRelation(*)"></FormItem>
+                                </FormItems>
+                            </TelerikForm>
+                        </div>
+                        <span style="font-weight:bold;font-size:24px">파일 첨부</span>
+                        @*
+                        <div class="form-section2">
+                            <div class="k-form-field-wrap">
+                                <TelerikUpload AutoUpload="false" SaveUrl="@SaveUrl" AllowedExtensions="@( new List<string>() { ".jpg", ".png", ".xlsx", ".docx" } )">
+                                </TelerikUpload>
+                                <div class="k-form-hint">Accepted files: <strong>Images and Video</strong></div>
+                            </div>
+                        </div>
+                        *@
+                        <div class="form-section2">
+                            <div class="k-form-field-wrap">
+                                <TelerikFileSelect class="k-upload" AllowedExtensions="@AllowedExtensions"
+                                                   MaxFileSize="@MaxFileSize"
+                                                   OnSelect="@OnSelectHandler">
+                                    <SelectFilesButtonTemplate>
+                                        <TelerikSvgIcon Icon="@SvgIcon.Upload" />
+                                        Click to Select Files
+                                    </SelectFilesButtonTemplate>
+                                </TelerikFileSelect>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </WindowContent>
+        </TelerikWindow>
+        @******************************************************************************@
+
+    </Authorized>
+
+    <NotAuthorized>
+        <h2>    로그인을 먼저 하세요</h2>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+    //===============================================
+    // Media
+    //===============================================
+    private List<Media> gListMediaData { get; set; } = new List<Media>();
+    public string gLogginUser = "";
+    public string gLogginId = "";
+
+    //--- Media Input Window
+    public MediaDto gMediaEntry = new MediaDto();
+    public int gNumColumns = 1;
+    public bool WindowMediaIsVisible { get; set; } = false;
+    public bool ValidMediaSubmit { get; set; } = false;
+    private TelerikForm FormMediaRef { get; set; }
+    private string gErrorMessage = "";
+
+    //========================================================================
+    //--- File Upload
+    public string SaveUrl => ToAbsoluteUrl("api/upload2/save/");
+    public string RemoveUrl => ToAbsoluteUrl("api/upload2/remove/");
+    List<string> AllowedExtensions { get; set; } = new List<string>() { ".docx", ".pdf", ".xlsx", ".txt" };
+    int MaxFileSize { get; set; } = 1024 * 1024; // 1 MB
+    public Dictionary<string, CancellationTokenSource> Tokens { get; set; } = new Dictionary<string, CancellationTokenSource>();
+
+
+    public string ToAbsoluteUrl(string url)
+    {
+        return $"{NavManager.BaseUri}{url}";
+    }
+
+    async Task OnSelectHandler(FileSelectEventArgs args)
+    {
+        foreach (var file in args.Files)
+        {
+            long lSize = file.Stream.Length;
+            UploadFile(file);
+        }
+    }
+
+    private async Task UploadFile(FileSelectFileInfo file)
+    {
+        // This code will work in Blazor Server apps.
+        // Saving files on the user device is not allowed in WebAssembly apps.
+        Tokens.Add(file.Id, new CancellationTokenSource());
+        var path = Path.Combine("c:\\Temp\\", file.Name);
+        await using FileStream fs = new FileStream(path, FileMode.Create);
+        await file.Stream.CopyToAsync(fs, Tokens[file.Id].Token);
+    }
+
+    private async Task ReadFile(FileSelectFileInfo file)
+    {
+        Tokens.Add(file.Id, new CancellationTokenSource());
+        var byteArray = new byte[file.Size];
+        await using MemoryStream ms = new MemoryStream(byteArray);
+        await file.Stream.CopyToAsync(ms, Tokens[file.Id].Token);
+    }
+
+    private async Task HandleRemoveFiles(FileSelectEventArgs args)
+    {
+        foreach (var file in args.Files)
+        {
+            // If you're still uploading the file, cancel the process first.
+            Tokens[file.Id].Cancel();
+            Tokens.Remove(file.Id);
+
+            await Task.Delay(1);
+
+            var path = Path.Combine("c:\\Temp\\", file.Name);
+
+            // Remove the file from the file system
+            //File.Delete(path);
+        }
+
+    }
+    //========================================================================
+    protected override async Task OnInitializedAsync()
+    {
+        gLogginUser = UserManager.GetUserName(HttpContextAccessor.HttpContext.User);
+        gLogginId = UserManager.GetUserId(HttpContextAccessor.HttpContext.User);
+        GetMediaData();
+    }
+
+
+    /************************************************************************
+     *  ALBUM Routines
+     ************************************************************************/
+
+    //========================================================================
+    private void GetMediaData()
+    {
+        //gListMediaData = alService.GetMediaData();
+    }
+
+    //========================================================================
+    // Popup Window
+    private void AddMedia()
+    {
+        WindowMediaIsVisible = true;
+    }
+
+    //========================================================================
+    // Show/Hide Album Window
+    void VisibleMediaChangedHandler(bool currVisible)
+    {
+        WindowMediaIsVisible = currVisible;
+        if (currVisible == false)
+        {
+            NavManager.NavigateTo("/input", true); // 다시 listup
+        }
+    }
+
+    //========================================================================
+    protected async void HandleValidMediaSubmit()
+    {
+        gErrorMessage = "OK";
+
+        //--- Check if AlbumName is Exist
+        //    (Exist)
+        //      * Description Same ==> 이미 존재. RETURN
+        //      *             Diff ==> Update 물어보고 처리
+        //    (NotExist)
+        //      * Add
+        //--- Check if Description is Same
+
+        //gErrorMessage = alService.AddOrUpdateAlbum(gMediaEntry, gLogginId);
+
+    }
+
+    //========================================================================
+    void HandleInvalidMediaSubmit()
+    {
+        ValidMediaSubmit = false;
+        gErrorMessage = "입력하지 않은 Album 항목이 있습니다";
+    }
+
+}
+
+

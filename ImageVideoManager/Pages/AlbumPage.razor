@@ -1,0 +1,248 @@
+﻿@page "/album"
+@using ImageVideoManager.Data
+@using ImageVideoManager.Entities;
+@using ImageVideoManager.Services
+@using Telerik.DataSource
+@using Telerik.DataSource.Extensions
+@using Telerik.FontIcons;
+@using Telerik.SvgIcons
+@using Microsoft.AspNetCore.Identity
+
+@inject NavigationManager NavManager
+@inject UserManager<ApplicationUser> UserManager
+@inject ILogger<AuthTest> Logger
+@inject AlbumService alService
+@inject IHttpContextAccessor HttpContextAccessor
+
+<PageTitle>Media</PageTitle>
+<div class="card-header text-lg-center pt-2 pb-2 fw-bold px-9"> Album 입력/검색 </div>
+
+<AuthorizeView>
+    <Authorized>
+        <CardHeader>
+        </CardHeader>
+
+        <CardBody class="form-section2">
+            <div class="horizontal-layout">
+            </div>
+
+            <TelerikGrid Class="sbms-grid"
+                         @ref="@GridAlbum"
+                         Data="@gListAlbumData"
+                         Pageable=false
+                         Groupable=false
+                         Sortable=false
+                         Resizable=false
+                         Width="100%"
+                         Height="100%">
+                <GridToolBarTemplate>
+                    <TelerikButton OnClick="@AddAlbum" ThemeColor="success" Icon=SvgIcon.ImageAdd>Album추가</TelerikButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                </GridToolBarTemplate>                
+                
+                <GridColumns>
+                    <GridColumn Field="@nameof(Album.AlbumID)" Width="50px" Title="AlbumID" />
+                    <GridColumn Field="@nameof(Album.UserID)" Width="100px" Title="UserID" />
+                    <GridColumn Field="@nameof(Album.AlbumName)" Width="100px" Title="Name" />
+                    <GridColumn Field="@nameof(Album.Description)" Width="200px" Title="Description" />
+                    <GridColumn Field="@nameof(Album.CreateAt)" Width="100px" Title="Created" />
+                </GridColumns>
+            </TelerikGrid>
+        </CardBody>
+
+        <CardBody class="form-section2">
+            <div class="horizontal-layout">
+            </div>
+
+            <TelerikGrid Class="sbms-grid"
+                         Data="@gListTagData"
+                         Pageable=false
+                         Groupable=false
+                         Sortable=false
+                         Resizable=false
+                         Width="100%"
+                         Height="100%">
+                <GridToolBarTemplate>
+                    <TelerikButton OnClick="@AddTag" ThemeColor="success" Icon=SvgIcon.ImageAdd>Tag추가</TelerikButton>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <TelerikTextBox Id="myTag" @bind-Value="@gStringTag" Width="120px" />&nbsp;&nbsp;&nbsp;&nbsp;
+                    @gErrorMessage
+                </GridToolBarTemplate>
+
+                <GridColumns>
+                    <GridColumn Field="@nameof(BaseTag.TagID)" Width="50px" Title="TagID" />
+                    <GridColumn Field="@nameof(BaseTag.TagName)" Width="200px" Title="TagName" />
+                </GridColumns>
+            </TelerikGrid>
+        </CardBody>
+
+
+
+        @******************************************************************************@
+        @*  Album Input Window                                                        *@
+
+        <TelerikWindow Visible="@WindowAlbumIsVisible"
+                       VisibleChanged="@VisibleAlbumChangedHandler"
+                       Modal="true"
+                       MinHeight="200px"
+                       Height="300px"
+                       MaxHeight="800px"
+                       MinWidth="400px"
+                       Width="1000px"
+                       MaxWidth="1000px">
+            <WindowTitle>
+                Album 생성/편집
+            </WindowTitle>
+            <WindowActions>
+                <WindowAction Name="Close" />
+            </WindowActions>
+            <WindowContent>
+                <div class="form-section">
+                    @if (ValidAlbumSubmit)
+                    {
+                        <div class="success-alert">
+                            데이터가 정상적으로 입력 되었습니다.
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <h2>@gErrorMessage</h2>
+                        </div>
+                        <div>
+                            <TelerikForm class="form-tel"
+                                         @ref="@FormAlbumRef"
+                                         Model="@gAlbumEntry"
+                                         Columns="@gNumColumns"
+                                         ColumnSpacing="10px"
+                                         Orientation=FormOrientation.Horizontal
+                                         ButtonsLayout="FormButtonsLayout.Start"
+                                         OnValidSubmit="@HandleValidAlbumSubmit"
+                                         ValidationMessageType="@FormValidationMessageType.Tooltip"
+                                         OnInvalidSubmit="@HandleInvalidAlbumSubmit">
+
+                                <FormButtons>
+                                    <TelerikButton ButtonType="@ButtonType.Submit" ThemeColor="primary">입력완료하기</TelerikButton>
+                                </FormButtons>
+
+                                <FormValidation>
+                                    <DataAnnotationsValidator />
+                                </FormValidation>
+                                <FormItems>
+                                    <FormItem Field="@nameof(Album.AlbumName)" LabelText="Album Name(*)"></FormItem>
+                                    <FormItem Field="@nameof(Album.Description)" LabelText="Description(*)"></FormItem>
+                                </FormItems>
+                            </TelerikForm>
+                        </div>
+                    }
+                </div>
+            </WindowContent>
+        </TelerikWindow>
+        @******************************************************************************@
+
+    </Authorized>
+
+    <NotAuthorized>
+        <h2>    로그인을 먼저 하세요</h2>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+    //===============================================
+    // Album 
+    //===============================================
+    private TelerikGrid<Album> GridAlbum { get; set; }   // 검색후 Ctq List Rebind하기 위해 (시간차로 표시 안될 수 있기 때문에)
+    private List<Album> gListAlbumData { get; set; } = new List<Album>();
+    public string gLogginUser = "";
+    public string gLogginId = "";
+
+    //--- Album Input Window
+    public AlbumTagDto gAlbumEntry = new AlbumTagDto();
+    public int gNumColumns = 1;
+    public bool WindowAlbumIsVisible { get; set; } = false;
+    public bool ValidAlbumSubmit { get; set; } = false;
+    private TelerikForm FormAlbumRef { get; set; }
+    private string gErrorMessage = "";
+
+    //===============================================
+    // Tag
+    //===============================================
+    private List<BaseTag> gListTagData { get; set; } = new List<BaseTag>();
+    private string gStringTag { get; set; } = "";
+
+    //========================================================================
+    protected override async Task OnInitializedAsync()
+    {
+        gLogginUser = UserManager.GetUserName(HttpContextAccessor.HttpContext.User);
+        gLogginId = UserManager.GetUserId(HttpContextAccessor.HttpContext.User);
+        GetAlbumData();
+        GetTagData();
+    }
+
+    /************************************************************************
+     *  ALBUM Routines
+     ************************************************************************/
+
+    //========================================================================
+    private void GetAlbumData()
+    {
+        gListAlbumData = alService.GetAlbumData();
+    }
+
+    //========================================================================
+    // Popup Window
+    private void AddAlbum()
+    {
+        WindowAlbumIsVisible = true;
+    }
+
+    //========================================================================
+    // Show/Hide Album Window
+    void VisibleAlbumChangedHandler(bool currVisible)
+    {
+        WindowAlbumIsVisible = currVisible;
+        if (currVisible == false)
+        {
+            NavManager.NavigateTo("/album", true); // 다시 listup
+        }
+    }
+
+    protected async void HandleValidAlbumSubmit()
+    {
+        gErrorMessage = "OK";
+
+        //--- Check if AlbumName is Exist
+        //    (Exist)
+        //      * Description Same ==> 이미 존재. RETURN
+        //      *             Diff ==> Update 물어보고 처리
+        //    (NotExist)
+        //      * Add
+        //--- Check if Description is Same
+
+        gErrorMessage = alService.AddOrUpdateAlbum(gAlbumEntry, gLogginId);
+
+    }
+
+    void HandleInvalidAlbumSubmit()
+    {
+        ValidAlbumSubmit = false;
+        gErrorMessage = "입력하지 않은 Album 항목이 있습니다";
+    }
+
+    /************************************************************************
+     *  ALBUM Routines
+     ************************************************************************/
+    protected async void AddTag()
+    {
+        gErrorMessage = "OK";
+        gErrorMessage = alService.AddOrUpdateTag(gStringTag);
+        GetTagData();
+    }
+
+    private void GetTagData()
+    {
+        gListTagData = alService.GetTagData();
+    }
+
+}
+
+
